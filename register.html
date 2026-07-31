@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Sweet Crumbs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🍪 Sweet Crumbs
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="menu.html">Menu</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="login.html">Login</a></li>
+
+<li>
+
+<a href="cart.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span id="cartCount">0</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+
+
+<section class="hero menu-hero">
+
+<div class="hero-content">
+
+<h1>
+
+Create Your Account
+
+</h1>
+
+<p>
+
+Join Sweet Crumbs and enjoy delicious treats!
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="login-section">
+
+<div class="login-card">
+
+<h2>
+
+Register
+
+</h2>
+
+<form id="registerForm">
+
+<input
+type="text"
+id="name"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+required>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+
+<button
+type="submit"
+class="btn">
+
+Create Account
+
+</button>
+
+</form>
+
+<p class="mt-3">
+
+Already have an account?
+
+<a href="login.html">
+
+Login Here
+
+</a>
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<div class="footer-content">
+
+<div class="footer-column">
+
+<h2>
+
+🍪 Sweet Crumbs
+
+</h2>
+
+<p>
+
+Freshly Baked Happiness
+
+</p>
+
+</div>
+
+<div class="footer-column">
+
+<h3>
+
+Quick Links
+
+</h3>
+
+<a href="index.html">Home</a><br>
+
+<a href="menu.html">Menu</a><br>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div class="footer-column">
+
+<h3>
+
+Contact
+
+</h3>
+
+<p>
+
+info@sweetcrumbs.com
+
+</p>
+
+<p>
+
++1 (555) 123-4567
+
+</p>
+
+</div>
+
+<div class="footer-column">
+
+<h3>
+
+Follow Us
+
+</h3>
+
+<i class="fab fa-facebook"></i>
+
+<i class="fab fa-instagram"></i>
+
+<i class="fab fa-x-twitter"></i>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 Sweet Crumbs. All Rights Reserved.
+
+</p>
+
+</footer>
+
+
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+
+let email=document.getElementById("email").value;
+
+let password=document.getElementById("password").value;
+
+let confirm=document.getElementById("confirmPassword").value;
+
+if(password!==confirm){
+
+alert("Passwords do not match!");
+
+return;
+
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||[];
+
+let exists=users.find(user=>user.email===email);
+
+if(exists){
+
+alert("Email already registered!");
+
+return;
+
+}
+
+let newUser={
+
+id:Date.now(),
+
+name:name,
+
+email:email,
+
+password:password
+
+};
+
+users.push(newUser);
+
+localStorage.setItem("users",JSON.stringify(users));
+
+alert("Registration Successful!");
+
+window.location.href="login.html";
+
+});
+
+</script>
+
+<script src="js/cart.js"></script>
+
+</body>
+
+</html>

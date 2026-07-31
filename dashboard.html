@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | Sweet Crumbs</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/admin.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🍪 Sweet Crumbs</h2>
+
+<ul>
+
+<li class="active">
+<a href="dashboard.html" style="color:white;text-decoration:none;">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+</li>
+
+<li>
+<a href="admin.html" style="color:white;text-decoration:none;">
+<i class="fa-solid fa-cookie-bite"></i> Products
+</a>
+</li>
+
+<li>
+<a href="index.html" style="color:white;text-decoration:none;">
+<i class="fa-solid fa-house"></i> Website
+</a>
+</li>
+
+<li>
+<a href="login.html" style="color:white;text-decoration:none;">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="admin-main">
+
+<h1>Dashboard</h1>
+
+<div class="dashboard-cards">
+
+<div class="dashboard-card">
+
+<h2 id="totalProducts">0</h2>
+
+<p>Total Products</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2 id="totalUsers">0</h2>
+
+<p>Registered Users</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2 id="totalOrders">0</h2>
+
+<p>Total Orders</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2 id="totalRevenue">$0.00</h2>
+
+<p>Total Revenue</p>
+
+</div>
+
+</div>
+
+<section class="add-product">
+
+<h2>Recent Activity</h2>
+
+<p style="margin-top:15px;line-height:2;">
+
+✔ Products are managed from the <strong>Products</strong> page.<br>
+
+✔ Orders are stored in Local Storage.<br>
+
+✔ Registered users are stored in Local Storage.<br>
+
+✔ Revenue is calculated automatically from orders.<br>
+
+</p>
+
+</section>
+
+<section class="products-table">
+
+<h2>System Information</h2>
+
+<table>
+
+<tr>
+
+<th>Module</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>Home Page</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+<tr>
+
+<td>Menu Page</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+<tr>
+
+<td>Shopping Cart</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+<tr>
+
+<td>Checkout</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+<tr>
+
+<td>User Registration</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+<tr>
+
+<td>Admin Panel</td>
+
+<td>✔ Working</td>
+
+</tr>
+
+</table>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+document.getElementById("totalProducts").innerText = products.length;
+
+document.getElementById("totalUsers").innerText = users.length;
+
+document.getElementById("totalOrders").innerText = orders.length;
+
+let revenue = 0;
+
+orders.forEach(order=>{
+
+revenue += order.total || 0;
+
+});
+
+document.getElementById("totalRevenue").innerText="$"+revenue.toFixed(2);
+
+</script>
+
+</body>
+
+</html>

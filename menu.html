@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Menu | Sweet Crumbs</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🍪 Sweet Crumbs
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="menu.html" class="active">Menu</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="login.html">Login</a></li>
+
+<li>
+
+<a href="cart.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span id="cartCount">0</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+
+
+<!-- ========================= -->
+
+<section class="hero menu-hero">
+
+<div class="hero-content">
+
+<span class="welcome-tag">
+
+Freshly Baked Daily
+
+</span>
+
+<h1>
+
+Our Delicious Menu
+
+</h1>
+
+<p>
+
+Discover freshly baked cookies and brownies made with
+premium ingredients.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+
+<section class="menu-controls">
+
+<h2>
+
+Browse Our Desserts
+
+</h2>
+
+<p class="section-text">
+
+Search, filter and sort your favorite desserts.
+
+</p>
+
+<div class="controls">
+
+<input
+
+type="text"
+
+id="searchInput"
+
+placeholder="Search cookies or brownies..."
+
+onkeyup="filterProducts()"
+
+>
+
+
+
+<select id="categoryFilter"
+
+onchange="filterProducts()">
+
+<option value="all">
+
+All Categories
+
+</option>
+
+<option value="Cookie">
+
+Cookies
+
+</option>
+
+<option value="Brownie">
+
+Brownies
+
+</option>
+
+</select>
+
+
+
+<select
+
+id="sortPrice"
+
+onchange="sortProducts()">
+
+<option value="default">
+
+Sort By
+
+</option>
+
+<option value="low">
+
+Price: Low to High
+
+</option>
+
+<option value="high">
+
+Price: High to Low
+
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+
+
+<!-- ========================= -->
+
+<section class="menu-products" id="products">
+
+    <div class="product-grid" id="menuProducts">
+
+        <!-- Products load here -->
+
+    </div>
+
+</section>
+
+<!-- =========================
+        QUICK VIEW MODAL
+========================= -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <span class="close-modal" onclick="closeModal()">
+            &times;
+        </span>
+
+        <img id="modalImage"
+             src=""
+             alt="Product Image">
+
+        <h2 id="modalTitle">
+
+            Product Name
+
+        </h2>
+
+        <h3 id="modalPrice">
+
+            $0.00
+
+        </h3>
+
+        <p id="modalDescription">
+
+            Product description will appear here.
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn"
+                id="modalCartButton">
+
+                Add To Cart
+
+            </button>
+
+            <button
+                class="btn btn-light"
+                onclick="closeModal()">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+        WISHLIST MESSAGE
+========================= -->
+
+<div id="wishlistPopup" class="wishlist-popup">
+
+    ❤️ Added to Wishlist!
+
+</div>
+
+
+
+<!-- =========================
+        NEWSLETTER
+========================= -->
+
+<section class="newsletter">
+
+    <h2>
+
+        Never Miss A Fresh Batch 🍪
+
+    </h2>
+
+    <p>
+
+        Subscribe to receive exclusive discounts,
+        new flavor announcements,
+        and seasonal specials.
+
+    </p>
+
+    <form class="newsletter-form">
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required>
+
+        <button class="btn">
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</section>
+
+
+
+<!-- =========================
+        FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-column">
+
+            <h2>
+
+                🍪 Sweet Crumbs
+
+            </h2>
+
+            <p>
+
+                Freshly Baked Happiness
+
+            </p>
+
+            <p>
+
+                Premium cookies and brownies made
+                with love every single day.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+
+                Quick Links
+
+            </h3>
+
+            <a href="index.html">
+
+                Home
+
+            </a><br>
+
+            <a href="menu.html">
+
+                Menu
+
+            </a><br>
+
+            <a href="about.html">
+
+                About
+
+            </a><br>
+
+            <a href="contact.html">
+
+                Contact
+
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+
+                Contact
+
+            </h3>
+
+            <p>
+
+                📧 info@sweetcrumbs.com
+
+            </p>
+
+            <p>
+
+                📞 +1 (555) 123-4567
+
+            </p>
+
+            <p>
+
+                📍 Sweet Street, Dessert City
+
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+
+                Follow Us
+
+            </h3>
+
+            <i class="fab fa-facebook fa-lg"></i>
+
+            <i class="fab fa-instagram fa-lg"></i>
+
+            <i class="fab fa-x-twitter fa-lg"></i>
+
+            <i class="fab fa-pinterest fa-lg"></i>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+
+        © 2026 Sweet Crumbs.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =========================
+        JAVASCRIPT
+========================= -->
+
+<script src="js/products.js"></script>
+
+<script src="js/cart.js"></script>
+
+<script src="js/main.js"></script>
+
+<script src="js/menu.js"></script>
+
+</body>
+
+</html>
