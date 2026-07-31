@@ -7,7 +7,7 @@ products = [
 {
 id:1,
 name:"Chocolate Chip",
-price:450,
+price:250,
 category:"Cookies",
 image:"images/chocolate-chip.jpg",
 description:"Classic chocolate chip cookies baked fresh every day.",
@@ -18,7 +18,7 @@ featured:true
 {
 id:2,
 name:"Double Chocolate",
-price:500,
+price:250,
 category:"Cookies",
 image:"images/double-chocolate.jpg",
 description:"Rich chocolate cookie loaded with chocolate chunks.",
@@ -28,7 +28,7 @@ sweetness:5
 {
 id:3,
 name:"Nutella Cookie",
-price:550,
+price:250,
 category:"Cookies",
 image:"images/nutella-cookie.jpg",
 description:"Soft cookie filled with creamy Nutella.",
@@ -38,7 +38,7 @@ sweetness:5
 {
 id:4,
 name:"Red Velvet",
-price:520,
+price:250,
 category:"Cookies",
 image:"images/red-velvet.jpg",
 description:"Red velvet cookie with cream cheese filling.",
@@ -48,7 +48,7 @@ sweetness:4
 {
 id:5,
 name:"Macadamia",
-price:530,
+price:250,
 category:"Cookies",
 image:"images/macadamia.jpg",
 description:"Buttery macadamia nut cookie.",
@@ -58,7 +58,7 @@ sweetness:4
 {
 id:6,
 name:"Oreo Brownie",
-price:650,
+price:350,
 category:"Brownies",
 image:"images/oreo-brownie.jpg",
 description:"Chocolate brownie topped with Oreo.",
@@ -69,7 +69,7 @@ featured:true
 {
 id:7,
 name:"Walnut Brownie",
-price:620,
+price:400,
 category:"Brownies",
 image:"images/walnut-brownie.jpg",
 description:"Fudgy brownie with crunchy walnuts.",
@@ -79,7 +79,7 @@ sweetness:4
 {
 id:8,
 name:"Caramel Brownie",
-price:670,
+price:380,
 category:"Brownies",
 image:"images/caramel-brownie.jpg",
 description:"Brownie drizzled with salted caramel.",
@@ -89,7 +89,7 @@ sweetness:5
 {
 id:9,
 name:"Fudge Brownie",
-price:600,
+price:320,
 category:"Brownies",
 image:"images/fudge-brownie.jpg",
 description:"Extra rich and gooey chocolate brownie.",
@@ -99,7 +99,7 @@ sweetness:5
 {
 id:10,
 name:"Cookie Box (4)",
-price:10,
+price:800,
 category:"Boxes",
 image:"images/cookie-box-4.jpg",
 description:"Choose any four cookies.",
@@ -109,7 +109,7 @@ sweetness:5
 {
 id:11,
 name:"Cookie Box (6)",
-price:20,
+price:1200,
 category:"Boxes",
 image:"images/cookie-box-6.jpg",
 description:"Choose any six cookies.",
@@ -119,7 +119,7 @@ sweetness:5
 {
 id:12,
 name:"Cookie Box (8)",
-price:30,
+price:1800,
 category:"Boxes",
 image:"images/cookie-box-8.jpg",
 description:"Choose any eight cookies.",
