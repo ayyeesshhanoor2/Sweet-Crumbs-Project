@@ -74,7 +74,31 @@ function displayCart(){
 
         <tr>
 
-            <td>${product.name}</td>
+         <td>
+
+<strong>${product.name}</strong>
+
+${product.selectedCookies ?
+
+`<br><small>
+
+Contains:<br>
+
+${
+Object.entries(product.selectedCookies)
+
+.filter(([cookie,qty])=>qty>0)
+
+.map(([cookie,qty])=>`${cookie} × ${qty}`)
+
+.join("<br>")
+}
+
+</small>`
+
+: ""}
+
+</td>
 
             <td>${product.category}</td>
 
