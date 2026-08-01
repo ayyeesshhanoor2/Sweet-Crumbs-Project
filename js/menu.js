@@ -180,34 +180,23 @@ function displayProducts(productList = products) {
                 ${"⭐".repeat(product.sweetness)}
 
             </div>
+<div class="product-controls">
 
-            <div class="product-actions">
+    <button
+        class="icon-btn"
+        onclick="quickView(${product.id})">
+        <i class="fa-solid fa-eye"></i>
+    </button>
 
-                <button
-                    class="icon-btn"
-                    onclick="quickView(${product.id})">
+    <div class="qty-control">
 
-                    <i class="fa-solid fa-eye"></i>
+        <button onclick="changeProductQty(${product.id},-1)">−</button>
 
-                </button>
+        <span id="productQty${product.id}">1</span>
 
-                <button
-                    class="icon-btn"
-                    onclick="addWishlist('${product.name}')">
+        <button onclick="changeProductQty(${product.id},1)">+</button>
 
-                    ❤️
-
-                </button>
-
-            </div>
-
-            <div class="qty-control">
-
-    <button onclick="changeProductQty(${product.id},-1)">-</button>
-
-    <span id="productQty${product.id}">1</span>
-
-    <button onclick="changeProductQty(${product.id},1)">+</button>
+    </div>
 
 </div>
 
