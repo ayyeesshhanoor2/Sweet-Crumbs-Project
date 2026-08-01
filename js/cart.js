@@ -80,21 +80,26 @@ function displayCart(){
 
 ${product.selectedCookies ?
 
-`<br><small>
-
-Contains:<br>
+`<div class="cookie-tags">
 
 ${
 Object.entries(product.selectedCookies)
 
 .filter(([cookie,qty])=>qty>0)
 
-.map(([cookie,qty])=>`${cookie} × ${qty}`)
+.map(([cookie,qty])=>
 
-.join("<br>")
+`<span class="cookie-tag">
+
+🍪 ${cookie} × ${qty}
+
+</span>`)
+
+.join("")
+
 }
 
-</small>`
+</div>`
 
 : ""}
 
@@ -126,7 +131,11 @@ Object.entries(product.selectedCookies)
 
     if(totalPrice){
 
-       totalPrice.innerText = "Rs. " + total;
+       document.getElementById("subtotalPrice").innerText =
+"Rs. " + total;
+
+totalPrice.innerText =
+"Rs. " + total;
 
     }
 
@@ -213,9 +222,7 @@ function checkout(){
 
     saveCart();
 
-    alert("Order placed successfully!");
-
-    window.location.href = "index.html";
+    window.location.href = "order-success.html";
 
 }
 

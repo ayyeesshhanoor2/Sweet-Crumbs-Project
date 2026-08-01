@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Confirmed</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="success-container">
+
+    <div class="success-card">
+
+        <h1>🎉 Thank You!</h1>
+
+        <h2>Your order has been placed.</h2>
+
+        <p>Your delicious treats are now being freshly prepared.</p>
+
+        <h3>🕒 Estimated Pickup Time</h3>
+
+        <p><strong>30–45 Minutes</strong></p>
+
+        <h3 id="orderNumber"></h3>
+
+        <a href="index.html" class="btn">
+
+            Continue Shopping
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("orderNumber").innerHTML=
+
+"Order #"+Math.floor(Math.random()*90000+10000);
+
+</script>
+
+</body>
+
+</html>
