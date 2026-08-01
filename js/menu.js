@@ -201,13 +201,23 @@ function displayProducts(productList = products) {
 
             </div>
 
-            <button
-                class="btn"
-                onclick="addToCart(${product.id})">
+            <div class="qty-control">
 
-                Add To Cart
+    <button onclick="changeProductQty(${product.id},-1)">-</button>
 
-            </button>
+    <span id="productQty${product.id}">1</span>
+
+    <button onclick="changeProductQty(${product.id},1)">+</button>
+
+</div>
+
+<button
+    class="btn"
+    onclick="addToCart(${product.id})">
+
+    Add To Cart
+
+</button>
 
         </div>
 
@@ -293,8 +303,8 @@ function quickView(id){
     document.getElementById("modalTitle").innerHTML =
     product.name;
 
-    document.getElementById("modalPrice").innerHTML =
-    "$"+product.price.toFixed(2);
+  document.getElementById("modalPrice").innerHTML =
+"Rs. " + product.price;
 
     document.getElementById("modalDescription").innerHTML =
     product.description;
@@ -328,17 +338,38 @@ function closeModal(){
 
 // ADD TO CART
 
+let selectedBox = null;
+let selectedCookies = {};
+let totalSelected = 0;
+
 function addToCart(id){
+
+    let product = products.find(p => p.id === id);
+
+    if(!product) return;
+
+    if(product.category === "Boxes"){
+
+        selectedBox = product;
+
+        openCookieBox(product);
+
+        return;
+
+    }
 
     let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
 
-    let product =
-    products.find(p=>p.id===id);
+   let qty = productQty[id] || 1;
 
-    if(!product) return;
+cart.push({
 
-    cart.push(product);
+    ...product,
+
+    quantity: qty
+
+});
 
     localStorage.setItem("cart",
     JSON.stringify(cart));
@@ -348,7 +379,6 @@ function addToCart(id){
     alert(product.name + " added to cart!");
 
 }
-
 
 
 // UPDATE CART COUNT
@@ -369,7 +399,142 @@ function updateCartCount(){
 
 }
 
+function openCookieBox(box){
 
+    selectedCookies = {};
+    totalSelected = 0;
+
+    let cookies = products.filter(p => p.category=="Cookies");
+
+    let html = "";
+
+    cookies.forEach(cookie=>{
+
+        html += `
+        <div class="cookie-item">
+
+            <span>${cookie.name}</span>
+
+            <div class="qty">
+
+                <button onclick="changeQty('${cookie.name}',${cookie.id},-1)">-</button>
+
+                <span id="qty${cookie.id}">0</span>
+
+                <button onclick="changeQty('${cookie.name}',${cookie.id},1)">+</button>
+
+            </div>
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById("cookieOptions").innerHTML = html;
+
+    updateSelectedCount();
+
+    document.getElementById("cookieBoxModal").style.display = "flex";
+
+}
+
+function closeCookieBox(){
+
+    document.getElementById("cookieBoxModal").style.display="none";
+
+}
+
+function changeQty(name,id,change){
+
+    let limit = 4;
+
+    if(selectedBox.id==11) limit=6;
+
+    if(selectedBox.id==12) limit=8;
+
+    if(!selectedCookies[name])
+
+        selectedCookies[name]=0;
+
+    if(change==1){
+
+        if(totalSelected>=limit) return;
+
+        selectedCookies[name]++;
+
+        totalSelected++;
+
+    }
+
+    else{
+
+        if(selectedCookies[name]>0){
+
+            selectedCookies[name]--;
+
+            totalSelected--;
+
+        }
+
+    }
+
+    document.getElementById("qty"+id).innerHTML =
+    selectedCookies[name];
+
+    updateSelectedCount();
+
+}
+
+function updateSelectedCount(){
+
+    let limit=4;
+
+    if(selectedBox.id==11) limit=6;
+
+    if(selectedBox.id==12) limit=8;
+
+    document.getElementById("selectedCount").innerHTML =
+    totalSelected+" / "+limit+" Selected";
+
+}
+
+function saveCookieBox(){
+
+    let limit=4;
+
+    if(selectedBox.id==11) limit=6;
+
+    if(selectedBox.id==12) limit=8;
+
+    if(totalSelected!=limit){
+
+        alert("Please select exactly "+limit+" cookies.");
+
+        return;
+
+    }
+
+    let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+
+        ...selectedBox,
+
+        selectedCookies
+
+    });
+
+    localStorage.setItem("cart",
+    JSON.stringify(cart));
+
+    updateCartCount();
+
+    closeCookieBox();
+
+    alert("Cookie Box added!");
+
+}
 
 // WISHLIST
 
@@ -408,7 +573,25 @@ window.onclick=function(event){
 
 }
 
+let productQty = {};
 
+function changeProductQty(id,change){
+
+    if(!productQty[id])
+
+        productQty[id]=1;
+
+    productQty[id]+=change;
+
+    if(productQty[id]<1)
+
+        productQty[id]=1;
+
+    document.getElementById("productQty"+id).innerHTML=
+
+    productQty[id];
+
+}
 
 // LOAD PAGE
 

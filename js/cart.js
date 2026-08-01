@@ -56,7 +56,7 @@ function displayCart(){
 
         if(totalPrice){
 
-            totalPrice.innerText = "$0.00";
+           totalPrice.innerText = "Rs. 0";
 
         }
 
@@ -68,7 +68,7 @@ function displayCart(){
 
     cart.forEach((product,index)=>{
 
-        total += product.price;
+        total += product.price * (product.quantity || 1);
 
         cartItems.innerHTML += `
 
@@ -78,7 +78,9 @@ function displayCart(){
 
             <td>${product.category}</td>
 
-            <td>$${product.price.toFixed(2)}</td>
+<td>${product.quantity || 1}</td>
+
+<td>Rs. ${product.price * (product.quantity || 1)}</td>
 
             <td>
 
@@ -100,7 +102,7 @@ function displayCart(){
 
     if(totalPrice){
 
-        totalPrice.innerText = "$" + total.toFixed(2);
+       totalPrice.innerText = "Rs. " + total;
 
     }
 
@@ -163,7 +165,7 @@ function checkout(){
 
     cart.forEach(item=>{
 
-        total += item.price;
+       total += item.price * (item.quantity || 1);
 
     });
 
